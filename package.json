@@ -1,0 +1,16 @@
+{
+  "name": "postman-newman",
+  "version": "1.0.0",
+  "description": "Project for storing Postman tests",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "api-tests-production": "newman run tests/CollectionReqRestApi.json --reporters junit --reporter-junit-export newman.xml"
+  },
+  "author": "Julio Riestra",
+  "dependencies": {
+    "newman": "^4.6.0"
+  }
+}
+

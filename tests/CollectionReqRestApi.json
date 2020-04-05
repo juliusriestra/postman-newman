@@ -1,0 +1,235 @@
+{
+	"info": {
+		"_postman_id": "b427aa3e-8ebc-43e9-b41a-54129868e877",
+		"name": "TestSuite-ReqRestAPi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET",
+			"item": [
+				{
+					"name": "Users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fb7bfcc4-c838-4263-8721-64045e464c09",
+								"exec": [
+									"console.log(\"Hello Postman\");\r",
+									"let url = pm.variables.get(\"url\");\r",
+									"console.log(\"Value for variable url is :\" + url);\r",
+									"\r",
+									"pm.variables.set(\"name\",\"postman\");\r",
+									"console.log(\"Value for variable name is:\" + pm.variables.get(\"name\"));\r",
+									"\r",
+									"console.log(pm.globals.get(\"name\"));\r",
+									"console.log(pm.globals.get(\"env\"));\r",
+									"\r",
+									"console.log(pm.environment.get(\"endpoint\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UserId",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/users/2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ScriptsTest",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2e2d12cc-912b-478c-b516-521f9ae0a012",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "36c71661-cb87-407e-9d33-555f3c2cc16b",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "POST",
+			"item": [
+				{
+					"name": "RegisterUser",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\"\r\n}"
+						},
+						"url": {
+							"raw": "https://reqres.in/{{endpoint}}",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"{{endpoint}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "a92efd15-5c8d-400f-b984-9f4b485e9701",
+				"type": "text/javascript",
+				"exec": [
+					"console.log(\"Hello Postman\");",
+					"let url = pm.variables.get(\"url\");",
+					"console.log(\"Value for variable url is :\" + url);",
+					"",
+					"pm.variables.set(\"name\",\"postman\");",
+					"console.log(\"Value for variable name is:\" + pm.variables.get(\"name\"));",
+					"",
+					"console.log(pm.globals.get(\"name\"));",
+					"",
+					"console.log(pm.globals.get(\"env\"));",
+					"",
+					"console.log(pm.environment.get(\"endpoint\"));"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "913ba573-a1e1-4b05-9ce5-c33ae401318a",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "c7599e38-4c76-476f-9d71-b0bfa78b486b",
+			"key": "url",
+			"value": "https://reqres.in",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
